@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Currency Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #c6f0c3;
+      
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .converter {
+      max-width: 300px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    .converter input[type="number"] {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    .converter select {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    .converter button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .result {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .logo {
+      max-width: 100px;
+      margin: 0 auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Currency Converter</h1>
+  <div class="converter">
+    <input type="number" id="amount" placeholder="Enter amount">
+    <select id="fromCurrency">
+      <option value="INR">Indian Rupee (INR)</option>
+      <option value="USD">US Dollar (USD)</option>
+      <option value="EUR">Euro (EUR)</option>
+      <option value="GBP">British Pound (GBP)</option>
+      <option value="AUD">Australian Dollar (AUD)</option>
+      <option value="CAD">Canadian Dollar (CAD)</option>
+      <option value="SGD">Singapore Dollar (SGD)</option>
+      <option value="CHF">Swiss Franc (CHF)</option>
+      <option value="MYR">Malaysian Ringgit (MYR)</option>
+      <option value="JPY">Japanese Yen (JPY)</option>
+      <option value="CNY">Chinese Yuan Renminbi (CNY)</option>
+    </select>
+    <select id="toCurrency">
+      <option value="INR">Indian Rupee (INR)</option>
+      <option value="USD">US Dollar (USD)</option>
+      <option value="EUR">Euro (EUR)</option>
+      <option value="GBP">British Pound (GBP)</option>
+      <option value="AUD">Australian Dollar (AUD)</option>
+      <option value="CAD">Canadian Dollar (CAD)</option>
+      <option value="SGD">Singapore Dollar (SGD)</option>
+      <option value="CHF">Swiss Franc (CHF)</option>
+      <option value="MYR">Malaysian Ringgit (MYR)</option>
+      <option value="JPY">Japanese Yen (JPY)</option>
+      <option value="CNY">Chinese Yuan Renminbi (CNY)</option>
+    </select>
+    <button onclick="convert()">Convert</button>
+  </div>
+  <div class="result" id="result"></div>
+  <img src="https://www.thebalancemoney.com/thmb/R6x0LZoDG_QpgB5de9pQFsAZReU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/what-are-exchange-rates-3306083_FINAL-ad4aa801c7ff4b52810c734d345dc401.png" alt="Exchange Rates">
+  <script>
+    function convert() {
+      var amount = parseFloat(document.getElementById('amount').value);
+      var fromCurrency = document.getElementById('fromCurrency').value;
+      var toCurrency = document.getElementById('toCurrency').value;
+
+      var conversionRates = {
+        INR: 1.00,
+        USD: 0.012194,
+        EUR: 0.011138,
+        GBP: 0.009582,
+        AUD: 0.018363,
+        CAD: 0.016117,
+        SGD: 0.016477,
+        CHF: 0.010907,
+        MYR: 0.056909,
+        JPY: 1.755804,
+        CNY: 0.0 // Add the conversion rate for Chinese Yuan Renminbi here
+      };
+
+      var convertedAmount = amount * conversionRates[toCurrency] / conversionRates[fromCurrency];
+
+      document.getElementById('result').innerHTML =
+        amount + ' ' + fromCurrency + ' = ' + convertedAmount.toFixed(2) + ' ' + toCurrency;
+    }
+  </script>
+</body>
+</html>
